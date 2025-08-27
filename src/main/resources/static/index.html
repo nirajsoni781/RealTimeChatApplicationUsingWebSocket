@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Two-User Chat Launcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial; padding: 32px; }
+    button { padding: 10px 16px; margin: 8px; font-size: 16px; cursor: pointer; }
+    .tip { margin-top: 16px; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Two-User Chat (Popup Demo)</h1>
+  <p>Open two popups—one as <b>user1</b> and another as <b>user2</b>—then start chatting.</p>
+
+  <button onclick="openChat('user1')">Open Chat as user1</button>
+  <button onclick="openChat('user2')">Open Chat as user2</button>
+
+  <div class="tip">
+    Tip: Open one in a normal window and another in an Incognito window to simulate two separate users.
+  </div>
+
+  <script>
+    function openChat(user) {
+      const w = 420, h = 560;
+      const y = window.top.outerHeight / 2 + window.top.screenY - ( h / 2);
+      const x = window.top.outerWidth / 2 + window.top.screenX - ( w / 2);
+      window.open(`/chat.html?user=${encodeURIComponent(user)}`, user,
+        `popup=yes,width=${w},height=${h},top=${y},left=${x}`);
+    }
+  </script>
+</body>
+</html>
